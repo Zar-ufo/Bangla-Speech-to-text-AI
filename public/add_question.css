@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f0f4f8;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  padding: 10px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  width: 100%;
+}
+
+header {
+  background: #FF6B6B;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+  font-size: 24px;
+}
+
+input[type="text"],
+input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  background: #FF6B6B;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background: #FF3B3B;
+}
+
+.message {
+  margin-top: 20px;
+  color: #FF6B6B;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+    margin: 30px auto;
+  }
+
+  header {
+    font-size: 20px;
+    padding: 15px;
+  }
+
+  input[type="text"],
+  input[type="submit"] {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .message {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+    margin: 20px auto;
+  }
+
+  header {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  input[type="text"],
+  input[type="submit"] {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .message {
+    font-size: 14px;
+  }
+}
