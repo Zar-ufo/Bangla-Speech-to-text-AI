@@ -1,14 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Speech Recognition AI</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
-  <script src="add_question.js"></script>
-  <link rel="stylesheet" href="add_question.css">
+  <link rel="stylesheet" href="style.css"> <!-- Link to your CSS -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script> <!-- For HTTP requests -->
 </head>
 <body>
   <div class="container">
@@ -25,6 +22,7 @@
       <button id="send-btn">Send</button>
       <button class="add-question-btn" onclick="window.location.href='add_question.html';">Add a New Question</button>
     </div>
+    <div id="response"></div> 
   </div>
 
   <script src="main.js"></script>

@@ -11,9 +11,15 @@ let qaData = []; // To store the data from the database
 
 // Fetch the qa.json file from the Node.js server
 fetch('/api/qa')
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
   .then(data => {
     qaData = data; // Save the questions array
+    console.log('QA Data Loaded:', qaData); // Log the loaded data for debugging
   })
   .catch(error => console.error('Error loading JSON:', error));
 
@@ -23,8 +29,7 @@ const createListItem = (text, sender) => `
 `;
 
 // Initialize Speech Recognition
-window.SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition;
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
 let recognition = new SpeechRecognition();
 recognition.lang = currentLang;
@@ -33,7 +38,7 @@ recognition.interimResults = false;
 recognition.addEventListener('result', (e) => {
   const text = e.results[0][0].transcript;
   addMessage('player', text);
-  handleAIResponse(text); // Simulate AI response
+  handleAIResponse(text); // Process AI response
 });
 
 recognition.addEventListener('end', recognition.start);
@@ -71,14 +76,16 @@ function addMessage(sender, text) {
 // Function to handle AI response based on JSON data
 function handleAIResponse(text) {
   const cleanedText = text.trim().toLowerCase(); // Clean and normalize the input
+  console.log('Input text:', cleanedText); // Log the cleaned input
 
   // Find a match in the JSON data
   const foundQA = qaData.find(qa => qa.question.trim().toLowerCase() === cleanedText);
 
   if (foundQA) {
-      addMessage('ai', foundQA.answer);
+    addMessage('ai', foundQA.answer);
   } else {
-      addMessage('ai', "I don't have an answer for that."); // Fallback if no match is found
+    addMessage('ai', "I don't have an answer for that."); // Fallback if no match is found
+    console.log('No match found for:', cleanedText); // Log if no match is found
   }
 }
 
